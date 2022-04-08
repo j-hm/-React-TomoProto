@@ -1,18 +1,17 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBjYHcBIpEyfYvqMxF8WZbfZU2bs6SW0as",
-  authDomain: "chattand-9a8a9.firebaseapp.com",
-  databaseURL: "https://chattand-9a8a9-default-rtdb.firebaseio.com",
-  projectId: "chattand-9a8a9",
-  storageBucket: "chattand-9a8a9.appspot.com",
-  messagingSenderId: "1061398696653",
-  appId: "1:1061398696653:web:9a6c5e04d9d675e0b74f84",
-  measurementId: "G-XBHNK4V5ED",
+  apiKey: "AIzaSyD1NlG0KHV8AMnxs2D1wHOG3U_NjXF4HC0",
+  authDomain: "fortomo-7d311.firebaseapp.com",
+  projectId: "fortomo-7d311",
+  storageBucket: "fortomo-7d311.appspot.com",
+  messagingSenderId: "352706070959",
+  appId: "1:352706070959:web:7f1fae901fe2085bb0075a",
+  measurementId: "G-M5BRQLN566",
 };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export default firebase.initializeApp(firebaseConfig);
 
-export default analytics;
+export const db = getFirestore();
