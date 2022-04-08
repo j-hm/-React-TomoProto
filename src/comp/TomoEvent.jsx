@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { db } from "../firebase.js";
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 function TomoEvent() {
   const [date, setDate] = useState(new Date());
@@ -20,6 +27,13 @@ function TomoEvent() {
   };
   useEffect(() => {
     getEvents();
+    const q = query(collection(db, "tomo"), orderBy("date", "asc"));
+    onSnapshot(q, (snapshot) => {
+      const eventsArray = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+      }));
+      setEvents(eventsArray);
+    });
   }, []);
 
   const onSubmit = async (e) => {
@@ -52,8 +66,8 @@ function TomoEvent() {
         <input type="submit" value="추가하기" />
       </form>
       <div>
-        {events.map((event) => (
-          <div key={event.id}>
+        {events.map((event, index) => (
+          <div key={index}>
             <h4>{event.date}</h4>
             <p>{event.event}</p>
           </div>
