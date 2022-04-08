@@ -1,26 +1,28 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import App from "./App";
-// import firebase from "./firebase";
-// console.log(firebase);
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
-
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import firebase from "./firebase";
+console.log(firebase);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
-reportWebVitals();
+// 여기로 문제 렌더링에 뭐가 있다
+
+// import React from "react";
+// import ReactDOM from "react-dom/client";
+// import App from "./App";
+// import reportWebVitals from "./reportWebVitals";
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
+
+// reportWebVitals();
