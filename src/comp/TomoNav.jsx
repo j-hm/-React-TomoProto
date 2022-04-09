@@ -1,19 +1,39 @@
 import React from "react";
 import { BrowserRouter, NavLink } from "react-router-dom";
-import "../css/TomoNav.css";
+import styled from "styled-components";
 
 function TomoNav({ children }) {
   return (
     <BrowserRouter>
       {children}
-      <div className="nav">
+      <Navi>
         <NavLink to="/">🏠</NavLink>
         <NavLink to="/event">🥳</NavLink>
         <NavLink to="/manitto">🤫</NavLink>
         <NavLink to="/setting">⚙️</NavLink>
-      </div>
+      </Navi>
     </BrowserRouter>
   );
 }
+
+const Navi = styled.div`
+  background-color: #eee;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  > a {
+    flex: 1;
+    padding: 16px 8px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      background-color: gold;
+      cursor: pointer;
+    }
+  }
+`;
 
 export default TomoNav;
