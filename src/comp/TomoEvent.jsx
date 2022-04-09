@@ -5,7 +5,6 @@ import { db } from "../firebase.js";
 import {
   addDoc,
   collection,
-  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -18,15 +17,7 @@ function TomoEvent() {
   // 변수 이름 더 좋은 거 있을 것 같아..바꾸고 싶어
   const [events, setEvents] = useState([]);
   // 전역으로 선언하도록 수정해야 편할 것 같음
-  const getEvents = async () => {
-    const querySnapshot = await getDocs(query(collection(db, "tomo")));
-    querySnapshot.forEach((doc) => {
-      const eventObj = { ...doc.data(), id: doc.id };
-      setEvents((prev) => [eventObj, ...prev]);
-    });
-  };
-  useEffect(() => {
-    getEvents();
+  const getEvents = () => {
     const q = query(collection(db, "tomo"), orderBy("date", "asc"));
     onSnapshot(q, (snapshot) => {
       const eventsArray = snapshot.docs.map((doc) => ({
@@ -34,6 +25,10 @@ function TomoEvent() {
       }));
       setEvents(eventsArray);
     });
+  };
+
+  useEffect(() => {
+    getEvents();
   }, []);
 
   const onSubmit = async (e) => {

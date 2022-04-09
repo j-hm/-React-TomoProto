@@ -10,6 +10,7 @@
 // );
 
 // 여기로 문제 렌더링에 뭐가 있다
+// StrictMode > 렌더링을 두번씩 발생시키는데 빌드할 때는 제외된다.
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -35,10 +36,12 @@ const GlobalStyle = createGlobalStyle`
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  //   <React.StrictMode>
+  <>
     <GlobalStyle />
     <App />
-  </React.StrictMode>
+  </>
+  //   </React.StrictMode>
 );
 
 reportWebVitals();
