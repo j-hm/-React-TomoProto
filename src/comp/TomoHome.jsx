@@ -44,7 +44,7 @@ function TomoHome() {
 }
 
 const Home = styled.section`
-  padding: 10px;
+  padding: 20px;
 `;
 
 const Logo = styled.h3`

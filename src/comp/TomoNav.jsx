@@ -16,6 +16,7 @@ function TomoNav({ children }) {
   );
 }
 
+// nav 위치 수정
 const Navi = styled.div`
   background-color: #eee;
   display: flex;
