@@ -36,14 +36,10 @@ const Manitto = styled.section`
 `;
 
 const Dday = styled.div`
-  background-color: #eee;
+  background-color: gold;
   border-radius: 10px;
   padding: 28px;
   text-align: center;
-  &:hover {
-    background-color: gold;
-    cursor: pointer;
-  }
   > p {
     font-size: 30px;
   }
@@ -80,8 +76,15 @@ const Input = styled.div`
     border-bottom: 1px solid #aaa;
   }
   > button {
-    width: 12%;
+    width: 15%;
     margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+
+    &:hover {
+      background-color: gold;
+    }
   }
 `;
 
