@@ -20,7 +20,7 @@ function TomoNav({ children }) {
 const Navi = styled.div`
   background-color: #eee;
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 
