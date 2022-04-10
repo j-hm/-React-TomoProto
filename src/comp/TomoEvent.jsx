@@ -10,6 +10,7 @@ import {
   query,
 } from "firebase/firestore";
 import styled from "styled-components";
+import EventItems from "./EventItems.jsx";
 
 function TomoEvent() {
   const [date, setDate] = useState(new Date());
@@ -22,6 +23,7 @@ function TomoEvent() {
     const q = query(collection(db, "tomo"), orderBy("date", "asc"));
     onSnapshot(q, (snapshot) => {
       const eventsArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
         ...doc.data(),
       }));
       setEvents(eventsArray);
@@ -67,16 +69,7 @@ function TomoEvent() {
       <Items>
         {events.map((event, index) =>
           event.date === date.toLocaleDateString() ? (
-            <Item key={index}>
-              <div>
-                <h4>{event.date}</h4>
-                <Option>
-                  <span>✏️</span>
-                  <span>🗑️</span>
-                </Option>
-              </div>
-              <p>ㅤ{event.event}</p>
-            </Item>
+            <EventItems key={index} eventObj={event} />
           ) : null
         )}
       </Items>
@@ -85,6 +78,7 @@ function TomoEvent() {
 }
 
 const Event = styled.section`
+  margin-bottom: 50px;
   padding: 20px;
 `;
 
@@ -134,24 +128,4 @@ const Items = styled.article`
   padding: 5px;
 `;
 
-const Item = styled.div`
-  margin: 15px 10px;
-  padding: 10px;
-  background-color: gold;
-  border-radius: 10px;
-  > div {
-    display: flex;
-  }
-  > p {
-    margin-top: 5px;
-    word-break: keep-all;
-  }
-`;
-
-const Option = styled.div`
-  margin-left: auto;
-  > span {
-    margin-left: 5px;
-  }
-`;
 export default TomoEvent;
